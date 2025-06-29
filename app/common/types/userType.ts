@@ -1,10 +1,12 @@
-import type { Profile } from "./profileType";
+import type { PostType } from "./postType";
+import type { ProfileType } from "./profileType";
 
-export type User = {
+export type UserType = {
     id: string;
     email: string;
 
-    profile: Profile
+    profile: ProfileType
+    post: PostType[]
 
     createdAt: Date;
     updatedAt: Date;

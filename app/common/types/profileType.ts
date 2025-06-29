@@ -1,6 +1,6 @@
-import type { User } from "./userType"
+import type { UserType } from "./userType"
 
-export type Profile = {
+export type ProfileType = {
     id: number
     avatarImage: string
     bannerImage: string
@@ -10,11 +10,11 @@ export type Profile = {
     kota: string
     pekerjaan: string
     website: string
+    userId: string
     
     createdAt: string
     updatedAt: string
 
-    userId: string
-    user:User
+    user:UserType
 
 }
