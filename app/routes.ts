@@ -4,5 +4,7 @@ export default [
     layout("./components/layouts/defaultLayout.tsx", [
         index("./routes/rootRoute.tsx")
     ]),
-    route("/home", "./routes/homeRoute.tsx"),
+    layout("./components/layouts/mainLayout.tsx", [
+        route("/home", "./routes/homeRoute.tsx"),
+    ])
 ] satisfies RouteConfig;
