@@ -1,15 +1,19 @@
 import React from "react";
-import { Outlet } from "react-router";
 import Navbar from "../navigations/mainNavbar";
+import MainSidebarLeft from "../sidebar/mainSidebarLeft";
+import MainSidebarRight from "../sidebar/mainSidebarRight";
+import { Outlet } from "react-router";
 
 export default function MainLayout() {
   return (
-    <div>
+    <div className="min-h-screen flex flex-col ">
       <Navbar />
-      <div>
-        <main>
+      <div className="flex flex-1">
+        <MainSidebarLeft />
+        <main className="flex-1  px-4 py-6">
           <Outlet />
         </main>
+        <MainSidebarRight />
       </div>
     </div>
   );

@@ -9,23 +9,23 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "~/common/shadcn/tooltip";
-
+import ProfildropDown from "../dropdown/profilDropdown";
 export default function Navbar() {
   const navMainItems = [
     {
       name: "beranda",
       href: "/beranda",
-      icon: <FaHome className="text-2xl text-gray-500" />,
+      icon: <FaHome />,
     },
     {
       name: "teman",
       href: "/teman",
-      icon: <FaUserFriends className="text-2xl text-gray-500" />,
+      icon: <FaUserFriends />,
     },
     {
       name: "group",
       href: "/group",
-      icon: <FaUsers className="text-2xl text-gray-500" />,
+      icon: <FaUsers />,
     },
   ];
 
@@ -48,15 +48,15 @@ export default function Navbar() {
             <TooltipTrigger asChild>
               <NavLink to={item.href}>
                 {({ isActive }) => (
-                  <div
-                    className={`p-2 rounded-sm transition ${
-                      isActive
-                        ? "bg-gray-950"
-                        : "hover:bg-gray-900 ease-in-out duration-200"
-                    }`}
-                  >
-                    {item.icon}
-                  </div>
+                <div
+                  className={`p-3 rounded-md text-2xl transition ${
+                    isActive
+                      ? "bg-gray-800 text-white"
+                      : "text-gray-400 hover:bg-gray-800"
+                  }`}
+                >
+                  {item.icon}
+                </div>
                 )}
               </NavLink>
             </TooltipTrigger>
@@ -65,15 +65,16 @@ export default function Navbar() {
         ))}
       </div>
 
-      <div>
+      <div className="flex items-center gap-4">
         <Tooltip>
           <TooltipTrigger asChild>
-            <div className="bg-gray-950 p-2 rounded-full">
+            <div className="hover:bg-gray-800 p-2 rounded-full">
               <IoNotifications className="text-2xl text-gray-500" />
             </div>
           </TooltipTrigger>
           <TooltipContent>Notifikasi</TooltipContent>
         </Tooltip>
+        <ProfildropDown />
       </div>
     </nav>
   );

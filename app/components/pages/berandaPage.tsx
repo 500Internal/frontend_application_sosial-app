@@ -6,7 +6,9 @@ export default function BerandaPage() {
     const [isOpen, setIsOpen] = React.useState(false);
   return (
     <>
-      <Button>asas</Button>
+    <div >
+      saaaaa
+    </div>
     </>
   )
 }
