@@ -6,7 +6,7 @@ import RootPage from "~/components/pages/rootPage";
 export default function RootRoute() {
   const nav = useNavigate();
   React.useEffect(() => {
-    nav("/home")
+    nav("/beranda")
   }, []);
   return <RootPage />
 }
