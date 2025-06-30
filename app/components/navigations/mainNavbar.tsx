@@ -31,7 +31,7 @@ export default function Navbar() {
 
   return (
     <nav className="flex items-center justify-between px-5 py-2 shadow-md">
-      <div className="hidden sm:flex items-center gap-3">
+      <div className="hidden sm:flex items-center gap-3 flex-1">
         <img src="/logo-v1.webp" alt="logo" className="h-12 w-12" />
         <div className="flex items-center gap-1">
           <Input
@@ -42,21 +42,21 @@ export default function Navbar() {
         </div>
       </div>
 
-      <div className="flex items-center gap-6">
+      <div className="flex items-center justify-center gap-8 flex-1">
         {navMainItems.map((item) => (
           <Tooltip key={item.name}>
             <TooltipTrigger asChild>
               <NavLink to={item.href}>
                 {({ isActive }) => (
-                <div
-                  className={`p-3 rounded-md text-2xl transition ${
-                    isActive
-                      ? "bg-gray-800 text-white"
-                      : "text-gray-400 hover:bg-gray-800"
-                  }`}
-                >
-                  {item.icon}
-                </div>
+                  <div
+                    className={`p-3 rounded-md text-2xl transition ${
+                      isActive
+                        ? "bg-gray-800 text-white"
+                        : "text-gray-400 hover:bg-gray-800"
+                    }`}
+                  >
+                    {item.icon}
+                  </div>
                 )}
               </NavLink>
             </TooltipTrigger>
@@ -65,7 +65,7 @@ export default function Navbar() {
         ))}
       </div>
 
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-4 justify-end flex-1">
         <Tooltip>
           <TooltipTrigger asChild>
             <div className="hover:bg-gray-800 p-2 rounded-full">
