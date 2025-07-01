@@ -1,6 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router";
-import LoadingScreen from "../loadings/pageLoading";
+import PageLoading from "../loadings/pageLoading";
 
 export default function DefaultLayout() {
   const [isVisible, setIsVisible] = React.useState(true);
@@ -14,7 +14,7 @@ export default function DefaultLayout() {
   }, []);
   return (
     <>
-      {isVisible? <LoadingScreen /> : <Outlet />}
+      {isVisible? <PageLoading /> : <Outlet />}
     </>
   );
 }

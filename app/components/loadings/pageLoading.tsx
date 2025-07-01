@@ -1,7 +1,7 @@
 // components/LoadingScreen.tsx
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function LoadingScreen() {
+export default function PageLoading() {
   return (
     <AnimatePresence>
       <motion.div
