@@ -7,8 +7,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { loginService } from "~/services/authService";
 import { Separator } from "~/common/shadcn/separator";
+import { useNavigate } from "react-router";
 
 export default function LoginForm() {
+  const nav = useNavigate();
   const {
     register,
     formState: { errors },
@@ -20,10 +22,9 @@ export default function LoginForm() {
   const { mutate, isPending } = useMutation({
     mutationFn: loginService,
     onSuccess: (data) => {
-      console.log(data);
+      
     },
     onError: (error) => {
-      console.log(error);
     },
   });
 
