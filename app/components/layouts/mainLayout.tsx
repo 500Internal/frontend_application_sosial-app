@@ -18,7 +18,7 @@ export default function MainLayout() {
       <Navbar />
       <div className="flex flex-1">
         <MainSidebarLeft />
-        <main className="flex-1 bg-[#15191d] px-4 py-6">
+        <main className="flex-1 bg-[#15191d] mt-16 lg:ml-72 lg:mr-60">
           <Outlet />
         </main>
         <MainSidebarRight />

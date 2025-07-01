@@ -12,7 +12,7 @@ const navItems = [
 
 export default function MainSidebarLeft() {
   return (
-    <aside className="hidden md:flex flex-col pl-1 gap-6 w-72 py-4  shadow-2xl border-gray-800">
+    <aside className="hidden lg:flex flex-col fixed top-16 left-0 h-[calc(100vh-4rem)] z-40 overflow-y-auto border-r bg-[#1d232a] pl-1 gap-6 w-72 py-4  shadow-2xl border-gray-800">
         <ProfileButton />
       <Separator orientation="horizontal" className="bg-gray-500" />
       <div className="flex flex-col gap-1">

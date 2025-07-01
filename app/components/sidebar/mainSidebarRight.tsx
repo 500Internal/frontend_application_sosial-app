@@ -2,7 +2,7 @@ import { IoNotifications } from "react-icons/io5";
 
 export default function MainSidebarRight() {
   return (
-    <aside className="hidden lg:flex flex-col gap-4 w-60 py-4 px-3 border-l border-gray-800">
+    <aside className="hidden lg:flex top-16 right-0 h-[calc(100vh-4rem)] z-40 overflow-y-auto fixed bg-[#1d232a] flex-col gap-4 w-60 py-4 px-3 border-l border-gray-800">
       <h2 className="text-lg font-semibold">Notifikasi</h2>
       <div className="flex items-center gap-2 bg-gray-800 p-2 rounded-md">
         <IoNotifications className="text-xl text-gray-400" />

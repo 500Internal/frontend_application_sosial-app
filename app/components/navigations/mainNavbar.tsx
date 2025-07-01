@@ -30,7 +30,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="flex items-center justify-between px-5 py-2 shadow-md">
+    <nav className="flex fixed top-0 left-0 right-0 z-50 bg-[#1d232a] items-center justify-between px-5 py-2 shadow-md">
       <div className="hidden sm:flex items-center gap-3 flex-1">
         <img src="/logo-v1.webp" alt="logo" className="h-12 w-12" />
         <div className="flex items-center gap-1">
