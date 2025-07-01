@@ -22,13 +22,13 @@ export default function MainSidebarLeft() {
               <div
                 className={`p-3 rounded-md items-center flex gap-4 transition ${
                   isActive
-                    ? "bg-gray-800 text-white"
-                    : "text-gray-400 hover:bg-gray-800"
+                    ? "bg-gray-600 text-white"
+                    : "text-gray-300 hover:bg-gray-800"
                 }`}
               >
                 <span className="text-2xl ">{icon}</span>
                 <div>
-                    <span className="text-lg">{name}</span>
+                    <span className="text-sm">{name}</span>
                 </div>
               </div>
             )}
