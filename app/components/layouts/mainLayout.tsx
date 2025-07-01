@@ -1,4 +1,3 @@
-import React from "react";
 import Navbar from "../navigations/mainNavbar";
 import MainSidebarLeft from "../sidebar/mainSidebarLeft";
 import MainSidebarRight from "../sidebar/mainSidebarRight";
@@ -10,7 +9,7 @@ export default function MainLayout() {
       <Navbar />
       <div className="flex flex-1">
         <MainSidebarLeft />
-        <main className="flex-1  px-4 py-6">
+        <main className="flex-1 bg-[#15191d] px-4 py-6">
           <Outlet />
         </main>
         <MainSidebarRight />
