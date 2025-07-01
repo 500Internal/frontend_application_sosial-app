@@ -2,8 +2,8 @@ import { apiClient } from "~/common/helpers/apiClient";
 import type { LoginSchema } from "~/common/schema/authSchema";
 import type { UserType } from "~/common/types/userType";
 
-export const loginService = async (data:LoginSchema) => {
-    return apiClient({
+export const loginService = async (data:LoginSchema):Promise<{data:UserType}> => {
+    return apiClient<{data:UserType}>({
         method: "POST",
         url: "/auth/login",
         data

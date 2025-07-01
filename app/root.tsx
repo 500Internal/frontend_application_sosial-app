@@ -37,15 +37,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
         <ReactQueryProvider>
           {children}
-          <ToastContainer
-            position="top-right"
-            autoClose={3000}
-            hideProgressBar={false}
-            closeOnClick
-            pauseOnHover
-            draggable
-            theme="colored"
-          />
         </ReactQueryProvider>
         <ScrollRestoration />
         <Scripts />

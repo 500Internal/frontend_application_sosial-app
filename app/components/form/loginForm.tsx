@@ -8,6 +8,7 @@ import { useMutation } from "@tanstack/react-query";
 import { loginService } from "~/services/authService";
 import { Separator } from "~/common/shadcn/separator";
 import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
 
 export default function LoginForm() {
   const nav = useNavigate();
@@ -22,18 +23,19 @@ export default function LoginForm() {
   const { mutate, isPending } = useMutation({
     mutationFn: loginService,
     onSuccess: (data) => {
-      
+      nav("/");
     },
     onError: (error) => {
+      toast.error("Login gagal");
     },
   });
 
   const onSubmit = (data: LoginSchema) => {
     mutate(data);
   };
-
   //input to handleSubmit to onSbmit to mutate to service
 
+  
   return (
       <section className="flex flex-col gap-3">
         <form
