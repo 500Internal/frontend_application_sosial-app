@@ -8,7 +8,7 @@ import { useMutation } from "@tanstack/react-query";
 import { loginService } from "~/services/authService";
 import { Separator } from "~/common/shadcn/separator";
 import { useNavigate } from "react-router";
-import { toast } from "react-toastify";
+import { toast } from "sonner";
 
 export default function LoginForm() {
   const nav = useNavigate();

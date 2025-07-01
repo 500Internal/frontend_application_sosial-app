@@ -1,5 +1,4 @@
-import React from "react";
-import AlerModal from "../modals/dangerModal";
+import { Button } from "~/common/shadcn/button";
 import HomeHeaderCard from "../cards/homeHeaderCard";
 
 export default function BerandaPage() {

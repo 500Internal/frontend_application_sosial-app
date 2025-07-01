@@ -6,7 +6,7 @@ import UploadPostButton from "../buttons/uploadPostButton";
 import { Trash } from "lucide-react";
 import { useMutation } from "@tanstack/react-query";
 import { createPost } from "~/services/postService";
-import {toast} from "react-toastify"
+import { toast } from "sonner";
 
 export default function HomeHeaderForm() {
   const [caption, setCaption] = React.useState<string>("");
