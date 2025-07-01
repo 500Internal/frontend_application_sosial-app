@@ -5,15 +5,22 @@ import { Separator } from "~/common/shadcn/separator";
 import UploadPostButton from "../buttons/uploadPostButton";
 import { Trash } from "lucide-react";
 import { useMutation } from "@tanstack/react-query";
+import { createPost } from "~/services/postService";
+import {toast} from "react-toastify"
 
 export default function HomeHeaderForm() {
   const [caption, setCaption] = React.useState<string>("");
   const [preview, setPreview] = React.useState<string[]>([]);
+  const [media, setMedia] = React.useState<File[]>([]);
 
   const handleRemovePreview = (index: number) => {
     const newPreview = [...preview];
     newPreview.splice(index, 1);
     setPreview(newPreview);
+
+    const newMedia = [...media!];
+    newMedia.splice(index, 1);
+    setMedia(newMedia);
   };
 
   const hadlePreview = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -21,15 +28,30 @@ export default function HomeHeaderForm() {
     if (!files) return;
     const urls = Array.from(files).map((file) => URL.createObjectURL(file));
     setPreview(urls);
+    setMedia(Array.from(files));
   };
 
-  const {} = useMutation({
-
+  const {mutate, isPending} = useMutation({
+    mutationFn: createPost,
+    onSuccess: (data) => {
+      toast.success("Post berhasil dibuat")
+      setCaption("")
+      setPreview([])
+      setMedia([])
+    },
+    onError: (error) => {
+      toast.error("Post gagal dibuat")
+    },
   });
-  
+
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    mutate({caption, media: media?.length ? media : []});
+  }
+
   return (
     <>
-      <form className="flex flex-col gap-4">
+      <form className="flex flex-col gap-4" onSubmit={onSubmit}>
         <div className="flex items-center gap-3">
           <img src="/logo-v1.webp" alt="logo" className="h-12 w-12" />
           <Input
@@ -58,6 +80,7 @@ export default function HomeHeaderForm() {
           <Button
             type="submit"
             className="bg-purple-600 text-white hover:bg-purple-700"
+            disabled={isPending}
           >
             Post
           </Button>
