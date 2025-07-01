@@ -11,13 +11,15 @@ import {toast} from "react-toastify"
 export default function HomeHeaderForm() {
   const [caption, setCaption] = React.useState<string>("");
   const [preview, setPreview] = React.useState<string[]>([]);
-  const [media, setMedia] = React.useState<File[]>([]);
+  const [media, setMedia] = React.useState<File[]>([]); // array file
 
   const handleRemovePreview = (index: number) => {
+    // remove preview
     const newPreview = [...preview];
     newPreview.splice(index, 1);
     setPreview(newPreview);
 
+    // remove media
     const newMedia = [...media!];
     newMedia.splice(index, 1);
     setMedia(newMedia);
@@ -28,6 +30,7 @@ export default function HomeHeaderForm() {
     if (!files) return;
     const urls = Array.from(files).map((file) => URL.createObjectURL(file));
     setPreview(urls);
+    // media jadi array file
     setMedia(Array.from(files));
   };
 
@@ -35,6 +38,7 @@ export default function HomeHeaderForm() {
     mutationFn: createPost,
     onSuccess: (data) => {
       toast.success("Post berhasil dibuat")
+      // reset
       setCaption("")
       setPreview([])
       setMedia([])
@@ -46,6 +50,7 @@ export default function HomeHeaderForm() {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    // create post lewat service dengan mutate
     mutate({caption, media: media?.length ? media : []});
   }
 

@@ -2,16 +2,17 @@ import { useQuery } from "@tanstack/react-query";
 import Navbar from "../navigations/mainNavbar";
 import MainSidebarLeft from "../sidebar/mainSidebarLeft";
 import MainSidebarRight from "../sidebar/mainSidebarRight";
-import { Outlet, redirect } from "react-router";
+import { Outlet, redirect, useNavigate } from "react-router";
 import { getSession } from "~/services/authService";
 
 export default function MainLayout() {
+  const nav = useNavigate();
   const {data,isError} = useQuery({
     queryKey: ["session"],
     queryFn: getSession
   });
   if (isError){
-    return redirect('/login')
+    return nav('/auth/login')
   }
   return (
     <div className="min-h-screen flex flex-col ">
