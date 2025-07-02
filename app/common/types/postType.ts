@@ -4,7 +4,6 @@ import type { UserType } from "./userType";
 export type PostType = {
     id: string;
     caption: string;
-    content: string;
     userId: string;
     
     user: UserType;
