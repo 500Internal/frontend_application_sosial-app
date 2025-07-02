@@ -8,7 +8,7 @@ type Props = {
   profile: ProfileType;
 };
 
-export default function ProfileButton({ profile }: Props) {
+export default function AvatarButton({ profile }: Props) {
   return (
     <NavLink to={`/profile/${profile.id}`} className="flex items-center gap-2 text-white">
       <Avatar className="w-12 h-12">

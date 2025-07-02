@@ -7,7 +7,7 @@ export type UserType = {
 
     profile: ProfileType
     post: PostType[]
-
+    
     createdAt: Date;
     updatedAt: Date;
 }

@@ -13,3 +13,20 @@ export type PostType = {
     createdAt: string;
     updatedAt: string;
 };
+
+export type PostPaginationType = {
+    message: string;
+    totas_page: number;
+    current_page: number;
+    perPage: number;
+    total: number;
+    data: PostType[];
+    meta: MetaPostPaginationType
+}
+
+export type MetaPostPaginationType = {
+    total: number;
+    perPage: number;
+    currentPage: number;
+    lastPage: number;
+}
