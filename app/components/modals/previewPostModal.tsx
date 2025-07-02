@@ -57,7 +57,7 @@ export default function PreviewPostModal({
         <img
           src={image.url}
           alt=""
-          className="max-w-[90vw] max-h-[90vh] object-contain rounded"
+          className="w-auto h-full object-contain rounded"
         />
       </motion.div>
     </AnimatePresence>

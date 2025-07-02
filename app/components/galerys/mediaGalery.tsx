@@ -1,6 +1,7 @@
 import React from 'react'
 import type { PostType } from '~/common/types/postType'
 import GaleryItem1 from './Item1Galery'
+import GaleryItem2 from './item2Galery'
 
 type Props = {
     post:PostType
@@ -12,6 +13,8 @@ export default function MediaGalery({post}: Props) {
     if (total === 0) return null
 
     if (total === 1) return <GaleryItem1 post={post} />
+
+    if (total > 1 && total <= 4) return <GaleryItem2 post={post} />
 
   return (
     <div>
