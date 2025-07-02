@@ -15,7 +15,7 @@ export default function GaleryItem1({ post }: Props) {
           className="relative cursor-pointer"
           onClick={() => setActiveIndex(index)}
         >
-          <img src={media.url} alt="" className="w-full h-[300px] object-cover" />
+          <img src={media.url}  className="w-full h-[300px] object-cover" />
         </div>
       ))}
       {activeIndex !== null && (
