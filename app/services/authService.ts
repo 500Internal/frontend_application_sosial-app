@@ -16,3 +16,10 @@ export const getSession = async ():Promise<{data:UserType}> => {
         url: "/auth/session"
     })
 };
+
+export const logOut = async ():Promise<void> => {
+    return apiClient<void>({
+        method: "POST",
+        url: "/auth/logout"
+    })
+};
