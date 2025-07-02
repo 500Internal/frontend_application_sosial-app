@@ -10,7 +10,7 @@ export type Props = {
 
 export default function HeaderPost({post}:Props) {
   return (
-    <section className='flex items-center gap-2'>
+    <section className='flex items-center px-4 gap-2'>
         <Avatar className='w-11 h-11'>
             <AvatarImage  src={post.user.profile.avatarImage || ImageDefaultEnum.Default} />
             <AvatarFallback>{post.user.profile.name || "profile"}</AvatarFallback>

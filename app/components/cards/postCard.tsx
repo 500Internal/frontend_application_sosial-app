@@ -10,8 +10,8 @@ export type Props = {
 
 export default function PostCard({post}:Props) {
   return (
-    <Card className='bg-[#1d232a] mt-4 rounded-md border-0  shadow-lg'>
-        <CardContent className=''>
+    <Card className='bg-[#1d232a] mt-4  rounded-md border-0  shadow-lg'>
+        <CardContent className='p-0'>
             {post&&
             <HeaderPost post={post} />
             }

@@ -19,7 +19,7 @@ export default function ProfildropDown({profile,label,children}:Props) {
       <DropdownMenuTrigger>
         <Avatar className='w-12 h-12'>
           <AvatarImage  src={profile.avatarImage || ImageDefaultEnum.Default } />
-          <AvatarFallback>CN</AvatarFallback>
+          <AvatarFallback>{profile.name || "profile"}</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent className='bg-[#1d232a]  border-gray-600/65 rounded-sm shadow-lg'>
