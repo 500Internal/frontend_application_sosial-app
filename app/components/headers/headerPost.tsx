@@ -17,7 +17,7 @@ export default function HeaderPost({post}:Props) {
         </Avatar>
         <div>
             <h4 className='font-semibold text-lg text-white/80'>{post.user.profile.name}</h4>
-            <span className='text-sm text-gray-500 text-muted-foreground'>{localDate(post.createdAt)}</span>
+            <span className='text-sm text-white/60'>{localDate(post.createdAt)}</span>
         </div>
     </section>
   )

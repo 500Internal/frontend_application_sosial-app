@@ -2,6 +2,7 @@ import React from 'react'
 import { Card, CardContent } from '~/common/shadcn/card'
 import HeaderPost from '../headers/headerPost'
 import type { PostType } from '~/common/types/postType'
+import PostContent from '../contents/postContent'
 
 export type Props = {
     post:PostType
@@ -13,6 +14,9 @@ export default function PostCard({post}:Props) {
         <CardContent className=''>
             {post&&
             <HeaderPost post={post} />
+            }
+            {post&&
+            <PostContent post={post} />
             }
         </CardContent>
     </Card>

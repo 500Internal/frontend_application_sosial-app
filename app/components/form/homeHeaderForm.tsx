@@ -4,7 +4,7 @@ import { Input } from "~/common/shadcn/input";
 import { Separator } from "~/common/shadcn/separator";
 import UploadPostButton from "../buttons/uploadPostButton";
 import { Trash } from "lucide-react";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createPost } from "~/services/postService";
 import { toast } from "sonner";
 
@@ -12,6 +12,7 @@ export default function HomeHeaderForm() {
   const [caption, setCaption] = React.useState<string>("");
   const [preview, setPreview] = React.useState<string[]>([]);
   const [media, setMedia] = React.useState<File[]>([]); // array file
+  const queryClient = useQueryClient();
 
   const handleRemovePreview = (index: number) => {
     // remove preview
@@ -39,6 +40,9 @@ export default function HomeHeaderForm() {
     onSuccess: (data) => {
       toast.success("Post berhasil dibuat")
       // reset
+      queryClient.invalidateQueries({
+        queryKey: ["posts"],
+      });
       setCaption("")
       setPreview([])
       setMedia([])
