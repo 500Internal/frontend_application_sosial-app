@@ -1,17 +1,23 @@
 import React from "react";
 import { NavLink } from "react-router";
+import { ImageDefaultEnum } from "~/common/enums/imageDefaultEnum";
 import { Avatar, AvatarFallback, AvatarImage } from "~/common/shadcn/avatar";
+import type { ProfileType } from "~/common/types/profileType";
 
-export default function ProfileButton() {
+type Props = {
+  profile: ProfileType;
+};
+
+export default function ProfileButton({ profile }: Props) {
   return (
-    <NavLink to="/profile" className="flex items-center gap-2 text-white">
+    <NavLink to={`/profile/${profile.id}`} className="flex items-center gap-2 text-white">
       <Avatar className="w-12 h-12">
-        <AvatarImage src="https://github.com/shadcn.png" />
-        <AvatarFallback>CN</AvatarFallback>
+        <AvatarImage src={profile.avatarImage || ImageDefaultEnum.Default} />
+        <AvatarFallback>{profile.name || "profile"}</AvatarFallback>
       </Avatar>
       <div className="flex flex-col justify-center">
-        <span className="text-sm text-white/70">@chadcn</span>
-        <span className="text-md font-medium text-white">Chadcn</span>
+        <span className="text-sm text-white/70">{profile.user.email}</span>
+        <span className="text-md font-medium text-white">{profile.name}</span>
       </div>
     </NavLink>
   );

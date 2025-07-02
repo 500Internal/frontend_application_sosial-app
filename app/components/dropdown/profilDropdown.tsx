@@ -1,13 +1,19 @@
 import React from 'react'
+import { ImageDefaultEnum } from '~/common/enums/imageDefaultEnum'
 import { Avatar, AvatarFallback, AvatarImage } from '~/common/shadcn/avatar'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuLabel, DropdownMenuTrigger } from '~/common/shadcn/dropdown-menu'
+import type { ProfileType } from '~/common/types/profileType'
 
-export default function ProfildropDown() {
+type Props = {
+  profile:ProfileType
+}
+
+export default function ProfildropDown({profile}:Props) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
         <Avatar className='w-12 h-12'>
-          <AvatarImage  src="https://github.com/shadcn.png" />
+          <AvatarImage  src={profile.avatarImage || ImageDefaultEnum.Default } />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>

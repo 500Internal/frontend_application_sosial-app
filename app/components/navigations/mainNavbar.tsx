@@ -10,7 +10,13 @@ import {
   TooltipTrigger,
 } from "~/common/shadcn/tooltip";
 import ProfildropDown from "../dropdown/profilDropdown";
-export default function Navbar() {
+import type { ProfileType } from "~/common/types/profileType";
+
+type Props = {
+  profile: ProfileType;
+};
+
+export default function Navbar({ profile }: Props) {
   const navMainItems = [
     {
       name: "beranda",
@@ -51,7 +57,7 @@ export default function Navbar() {
                   <div
                     className={`p-3 rounded-md text-2xl transition ${
                       isActive
-                        ? "bg-gray-800 text-white"
+                        ? "bg-gray-800 text-blue-400"
                         : "text-gray-400 hover:bg-gray-800"
                     }`}
                   >
@@ -74,7 +80,7 @@ export default function Navbar() {
           </TooltipTrigger>
           <TooltipContent>Notifikasi</TooltipContent>
         </Tooltip>
-        <ProfildropDown />
+        {profile && <ProfildropDown profile={profile} />}
       </div>
     </nav>
   );
