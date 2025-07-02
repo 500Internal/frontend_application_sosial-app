@@ -1,6 +1,6 @@
 import React from 'react'
 import type { PostType } from '~/common/types/postType'
-import GaleryItem1 from './galeryItem1'
+import GaleryItem1 from './Item1Galery'
 
 type Props = {
     post:PostType
