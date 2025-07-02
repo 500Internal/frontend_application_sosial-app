@@ -11,6 +11,7 @@ import {
 } from "~/common/shadcn/tooltip";
 import ProfildropDown from "../dropdown/profilDropdown";
 import type { ProfileType } from "~/common/types/profileType";
+import LogoutButton from "../buttons/logoutButton";
 
 type Props = {
   profile: ProfileType;
@@ -80,7 +81,13 @@ export default function Navbar({ profile }: Props) {
           </TooltipTrigger>
           <TooltipContent>Notifikasi</TooltipContent>
         </Tooltip>
-        {profile && <ProfildropDown profile={profile} />}
+        {profile && 
+        <ProfildropDown 
+        profile={profile}
+        label={"Account"} 
+        >
+        <LogoutButton />  
+        </ProfildropDown>}
       </div>
     </nav>
   );

@@ -5,12 +5,15 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuLabel
 import type { ProfileType } from '~/common/types/profileType'
 import LogoutButton from '../buttons/logoutButton'
 import { Separator } from '~/common/shadcn/separator'
+import { Outlet } from 'react-router'
 
 type Props = {
   profile:ProfileType
+  label:string
+  children:React.ReactNode
 }
 
-export default function ProfildropDown({profile}:Props) {
+export default function ProfildropDown({profile,label,children}:Props) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
@@ -20,10 +23,10 @@ export default function ProfildropDown({profile}:Props) {
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent className='bg-[#1d232a]  border-gray-600/65 rounded-sm shadow-lg'>
-        <DropdownMenuLabel className='text-white'>Account</DropdownMenuLabel>
+        <DropdownMenuLabel className='text-white'>{label}</DropdownMenuLabel>
         <DropdownMenuGroup className='flex flex-col gap-2 p-2'>
         <Separator className='bg-gray-500' />
-        <LogoutButton />
+        {children}
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>

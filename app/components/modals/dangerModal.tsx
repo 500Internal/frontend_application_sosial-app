@@ -19,7 +19,7 @@ type AlerModalProps = {
   description: string;
 };
 
-export default function AlerModal({
+export default function DangerModal({
   isOpen,
   setOpen,
   onConfirm,
