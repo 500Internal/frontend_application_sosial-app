@@ -1,34 +1,46 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { ThumbsUp } from "lucide-react";
 import React from "react";
+import type { LikeType } from "~/common/types/likeType";
 import type { PostType } from "~/common/types/postType";
 import { getSession } from "~/services/authService";
-import { createLike } from "~/services/likeService";
+import { createLike, deleteLike } from "~/services/likeService";
 
 type Props = {
   post: PostType;
+  like: LikeType[]
 };
 
-export default function LikeButton({ post }: Props) {
+export default function LikeButton({ post, like }: Props) {
     const queryClient = useQueryClient();
   const { data, isError } = useQuery({
     queryKey: ["session"],
     queryFn: getSession,
   });
-  const isLiked = post.like.find((like) => like.userId === data?.data.id);
+  const isLiked = like.some((l) => l.userId === data?.data.id);
 
   const { mutate: addLike } = useMutation({
     mutationFn: () => createLike(post.id),
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["post", post.id],
+        queryKey: ["like", post.id],
       });
     },
   });
 
+  const { mutate: removeLike } = useMutation({
+    mutationFn: () => deleteLike(post.id),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["like", post.id],
+      });
+    },
+  })
+
   const handleLike = () => {
     if (isLiked) {
       // remove like
+      removeLike();
     } else {
       // add like
       addLike();

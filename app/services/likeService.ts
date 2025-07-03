@@ -15,3 +15,10 @@ export const createLike = async (postId:string):Promise<{data:LikeType}> => {
         data: {postId}
     })
 }
+
+export const deleteLike = async (likeId:string):Promise<{data:LikeType}> => {
+    return apiClient<{data:LikeType}>({
+        method: "DELETE",
+        url: `/likes/${likeId}`
+    })
+}

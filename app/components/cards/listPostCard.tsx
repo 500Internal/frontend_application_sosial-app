@@ -16,7 +16,7 @@ export type Props = {
 
 export default function ListPostCard({post}:Props) {
     const {data} = useQuery({
-        queryKey: ["post", post.id],
+        queryKey: ["like", post.id],
         queryFn: () => getLikeByPostId(post.id),
       });
 
@@ -37,7 +37,7 @@ export default function ListPostCard({post}:Props) {
                 <Separator className='bg-gray-500' />
             </div>
             <div className='flex justify-between px-4'>
-              <LikeButton post={post} />
+              <LikeButton post={post} like={data?.data || []} />
               <Command/>             
             </div>
         </CardContent>
