@@ -7,3 +7,11 @@ export const getLikeByPostId = async (postId:string):Promise<{data:LikeType[]}> 
         url: `/likes/${postId}`
     })
 }
+
+export const createLike = async (postId:string):Promise<{data:LikeType}> => {
+    return apiClient<{data:LikeType}>({
+        method: "POST",
+        url: `/likes`,
+        data: {postId}
+    })
+}

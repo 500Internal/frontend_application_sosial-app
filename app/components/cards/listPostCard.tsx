@@ -4,8 +4,11 @@ import HeaderPost from '../headers/headerPost'
 import type { PostType } from '~/common/types/postType'
 import PostContent from '../contents/postContent'
 import { Separator } from '~/common/shadcn/separator'
-import { useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import { getLikeByPostId } from '~/services/likeService'
+import { Button } from '~/common/shadcn/button'
+import { Command, ThumbsUp } from 'lucide-react'
+import LikeButton from '../buttons/likeButton'
 
 export type Props = {
     post:PostType
@@ -28,10 +31,14 @@ export default function ListPostCard({post}:Props) {
             }
             <div className='my-3'>
               <div className='flex justify-between px-4'>
-                <span className='text-sm text-white/60'>{data?.data.length} likes</span>
+                <span className='text-sm text-white/60'>{data?.data.length || 0} likes</span>
                 <span>2 comments</span>
               </div>
                 <Separator className='bg-gray-500' />
+            </div>
+            <div className='flex justify-between px-4'>
+              <LikeButton post={post} />
+              <Command/>             
             </div>
         </CardContent>
     </Card>
