@@ -1,8 +1,9 @@
 import React from "react";
-import PostCard from "../cards/postCard";
+import PostCard from "../cards/listPostCard";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { getPosts } from "~/services/postService";
-import { PostSkeleton } from "../sekeletons/postSekeleton";
+import { PostSkeleton } from "../skeletons/postSekeleton";
+import LoadButton from "../buttons/loadButton";
 
 export default function InfiniteScrollPostHome() {
   //inifiniteQuery
@@ -23,22 +24,24 @@ export default function InfiniteScrollPostHome() {
     },
   });
 
-  if (status === 'pending') return <PostSkeleton />
+  if (status === "pending") return <PostSkeleton />;
 
   return (
-    <div>
-        {posts?.pages.map((page, index) => (
-          <div key={index} className="flex flex-col gap-4">
-            {status === 'success'&& page.posts.map((post) => (
-              <PostCard key={post.id} post={post} />
-            ))}
-          </div>
-        ))}
-        {hasNextPage && (
-        <button onClick={() => fetchNextPage()} disabled={isFetchingNextPage}>
-          {isFetchingNextPage ? <PostSkeleton /> : 'Load More'}
-        </button>
+    <div className="flex flex-col gap-4">
+      {posts?.pages.map((page, index) => (
+        <div key={index} className="flex flex-col gap-4">
+          {status === "success" &&
+            page.posts.map((post) => <PostCard key={post.id} post={post} />)}
+        </div>
+      ))}
+      {hasNextPage && (
+        <div className="flex justify-center">
+          <LoadButton
+            isFetching={isFetchingNextPage}
+            fetchNextPage={fetchNextPage}
+          />
+        </div>
       )}
     </div>
-  )
+  );
 }

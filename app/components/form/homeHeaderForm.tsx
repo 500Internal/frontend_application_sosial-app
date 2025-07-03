@@ -35,28 +35,28 @@ export default function HomeHeaderForm() {
     setMedia(Array.from(files));
   };
 
-  const {mutate, isPending} = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: createPost,
     onSuccess: (data) => {
-      toast.success("Post berhasil dibuat")
+      toast.success("Post berhasil dibuat");
       // reset
       queryClient.invalidateQueries({
         queryKey: ["posts"],
       });
-      setCaption("")
-      setPreview([])
-      setMedia([])
+      setCaption("");
+      setPreview([]);
+      setMedia([]);
     },
     onError: (error) => {
-      toast.error("Post gagal dibuat")
+      toast.error("Post gagal dibuat");
     },
   });
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // create post lewat service dengan mutate
-    mutate({caption, media: media?.length ? media : []});
-  }
+    mutate({ caption, media: media?.length ? media : [] });
+  };
 
   return (
     <>
@@ -72,10 +72,18 @@ export default function HomeHeaderForm() {
           />
         </div>
         {preview.map((image, index) => (
-          <div key={index} className="relative h-48 w-full" >
-            <img src={image} className="w-full h-full object-cover" alt="preview" />
-            <Button variant="destructive" className="absolute top-2 right-2" onClick={() => handleRemovePreview(index)} >
-                <Trash/>
+          <div key={index} className="relative h-48 w-full">
+            <img
+              src={image}
+              className="w-full h-full object-cover"
+              alt="preview"
+            />
+            <Button
+              variant="destructive"
+              className="absolute top-2 right-2"
+              onClick={() => handleRemovePreview(index)}
+            >
+              <Trash />
             </Button>
           </div>
         ))}
