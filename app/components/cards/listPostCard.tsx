@@ -4,12 +4,19 @@ import HeaderPost from '../headers/headerPost'
 import type { PostType } from '~/common/types/postType'
 import PostContent from '../contents/postContent'
 import { Separator } from '~/common/shadcn/separator'
+import { useQuery } from '@tanstack/react-query'
+import { getLikeByPostId } from '~/services/likeService'
 
 export type Props = {
     post:PostType
 }
 
 export default function ListPostCard({post}:Props) {
+    const {data} = useQuery({
+        queryKey: ["post", post.id],
+        queryFn: () => getLikeByPostId(post.id),
+      });
+
   return (
     <Card className='bg-[#1d232a] mt-4  rounded-md border-0  shadow-lg'>
         <CardContent className='p-0 flex flex-col gap-1'>
@@ -21,7 +28,7 @@ export default function ListPostCard({post}:Props) {
             }
             <div className='my-3'>
               <div className='flex justify-between px-4'>
-                <span className='text-sm text-white/60'>{post.like.length || 0} likes</span>
+                <span className='text-sm text-white/60'>{data?.data.length} likes</span>
                 <span>2 comments</span>
               </div>
                 <Separator className='bg-gray-500' />
