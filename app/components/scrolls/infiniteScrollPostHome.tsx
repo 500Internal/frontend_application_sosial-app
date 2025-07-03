@@ -1,9 +1,9 @@
 import React from "react";
-import PostCard from "../cards/listPostCard";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { getPosts } from "~/services/postService";
 import { PostSkeleton } from "../skeletons/postSekeleton";
 import LoadButton from "../buttons/loadButton";
+import ListPostCard from "../cards/listPostCard";
 
 export default function InfiniteScrollPostHome() {
   //inifiniteQuery
@@ -31,7 +31,7 @@ export default function InfiniteScrollPostHome() {
       {posts?.pages.map((page, index) => (
         <div key={index} className="flex flex-col gap-4">
           {status === "success" &&
-            page.posts.map((post) => <PostCard key={post.id} post={post} />)}
+            page.posts.map((post) => <ListPostCard key={post.id} post={post} />)}
         </div>
       ))}
       {hasNextPage && (

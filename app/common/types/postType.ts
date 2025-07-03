@@ -1,3 +1,4 @@
+import type { LikeType } from "./likeType";
 import type { MediaType } from "./mediaType";
 import type { UserType } from "./userType";
 
@@ -8,7 +9,7 @@ export type PostType = {
     
     user: UserType;
     media: MediaType[]
-    
+    like: LikeType[]
     createdAt: string;
     updatedAt: string;
 };

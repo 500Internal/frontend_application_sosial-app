@@ -1,3 +1,4 @@
+import type { LikeType } from "./likeType";
 import type { PostType } from "./postType";
 import type { ProfileType } from "./profileType";
 
@@ -7,6 +8,7 @@ export type UserType = {
 
     profile: ProfileType
     post: PostType[]
+    like: LikeType[]
     
     createdAt: Date;
     updatedAt: Date;
