@@ -9,6 +9,7 @@ import { loginService } from "~/services/authService";
 import { Separator } from "~/common/shadcn/separator";
 import { useNavigate } from "react-router";
 import { toast } from "sonner";
+import { useLogin } from "~/common/hooks/api/Auth";
 
 export default function LoginForm() {
   const nav = useNavigate();
@@ -19,22 +20,14 @@ export default function LoginForm() {
   } = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
   });
-  // mutation
-  const { mutate, isPending } = useMutation({
-    mutationFn: loginService,
-    onSuccess: (data) => {
-      nav("/");
-    },
-    onError: (error) => {
-      toast.error("Login gagal");
-    },
-  });
 
+  //hooks
+  const {isPending,mutate} = useLogin();
+
+  // onSubmit
   const onSubmit = (data: LoginSchema) => {
     mutate(data);
   };
-  //input to handleSubmit to onSbmit to mutate to service
-
   return (
     <section className="flex flex-col gap-3">
       <form className="flex flex-col  gap-6" onSubmit={handleSubmit(onSubmit)}>

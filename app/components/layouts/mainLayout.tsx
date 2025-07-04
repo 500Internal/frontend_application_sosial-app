@@ -6,14 +6,12 @@ import { Outlet, redirect, useNavigate } from "react-router";
 import { getSession } from "~/services/authService";
 import { getProfile } from "~/services/profileService";
 import type { ProfileType } from "~/common/types/profileType";
+import { useGetSession } from "~/common/hooks/api/Auth";
 
 export default function MainLayout() {
   const nav = useNavigate();
-  //session query
-  const { data, isError } = useQuery({
-    queryKey: ["session"],
-    queryFn: getSession,
-  });
+  const { data, isError } = useGetSession()
+  
   if (isError) {
     return nav("/auth/login");
   }
