@@ -9,7 +9,7 @@ export type PostType = {
     
     user: UserType;
     media: MediaType[]
-    like: LikeType[]
+    likes: LikeType[]
     createdAt: string;
     updatedAt: string;
 };

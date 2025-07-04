@@ -51,3 +51,5 @@ export const getPosts = async ({
     meta: res.data.meta,
   };
 };
+
+//get create delete pa

@@ -8,15 +8,18 @@ import { createLike, deleteLike } from "~/services/likeService";
 
 type Props = {
   post: PostType;
-  like: LikeType[]
+  like: LikeType[];
 };
 
 export default function LikeButton({ post, like }: Props) {
-    const queryClient = useQueryClient();
+  const queryClient = useQueryClient();
+
+  //session
   const { data, isError } = useQuery({
     queryKey: ["session"],
     queryFn: getSession,
   });
+  
   const isLiked = like.some((l) => l.userId === data?.data.id);
 
   const { mutate: addLike } = useMutation({
@@ -35,20 +38,22 @@ export default function LikeButton({ post, like }: Props) {
         queryKey: ["like", post.id],
       });
     },
-  })
+  });
 
   const handleLike = () => {
     if (isLiked) {
-      // remove like
       removeLike();
     } else {
-      // add like
       addLike();
     }
   };
   return (
     <button onClick={handleLike}>
-      <ThumbsUp className={isLiked ? "fill-blue-500 text-blue-500" : "w-6 h-6 text-blue-500"} />
+      <ThumbsUp
+        className={
+          isLiked ? "fill-blue-500 text-blue-500" : "w-6 h-6 text-blue-500"
+        }
+      />
     </button>
   );
 }

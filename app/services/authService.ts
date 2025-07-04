@@ -10,6 +10,8 @@ export const loginService = async (data:LoginSchema):Promise<{data:UserType}> =>
     })
 };
 
+
+
 export const getSession = async ():Promise<{data:UserType}> => {
     return apiClient<{data:UserType}>({
         method: "GET",
