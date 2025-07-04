@@ -9,7 +9,7 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
-import ReactQueryProvider from "./components/providers/queryProvider";
+import ReactQueryProvider from "../shared/providers/queryProvider";
 import { Toaster } from "sonner";
 
 export const links: Route.LinksFunction = () => [

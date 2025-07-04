@@ -1,6 +1,6 @@
-import React from 'react'
-import BerandaPage from '~/components/pages/berandaPage'
+import React from "react";
+import BerandaPage from "~/pages/berandaPage";
 
 export default function HomeRoute() {
-  return <BerandaPage />
+  return <BerandaPage />;
 }
