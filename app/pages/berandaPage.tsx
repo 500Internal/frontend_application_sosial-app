@@ -1,6 +1,5 @@
 import { Button } from "shared/shadcn/button";
 import HomeHeaderCard from "../features/post/components/createPostCard";
-import PostCard from "../cards/listPostCard";
 import InfiniteScrollPostHome from "../../shared/ui/scrolls/infiniteScrollPostHome";
 
 export default function BerandaPage() {
