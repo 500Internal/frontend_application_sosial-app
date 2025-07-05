@@ -20,6 +20,7 @@ type createReplyCommentType = {
     parentId: string;
     postId: string
 }
+
 export const createReplyComment = async (data: createReplyCommentType) => {
     return apiClient<void>({
         method: "POST",
