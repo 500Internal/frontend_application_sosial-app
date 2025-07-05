@@ -9,6 +9,7 @@ import PostContent from "~/features/post/components/postContent";
 import LikePostButton from "./likePostButton";
 import HeaderCardPost from "~/features/post/components/headerCardPost";
 import { useGetLikePostByPostId } from "../hooks/useGetLikePostByPostId";
+import DialogComment from "~/features/comment/components/dialogComment";
 
 export type Props = {
   post: PostType;
@@ -16,26 +17,30 @@ export type Props = {
 
 export default function ListPostCard({ post }: Props) {
   const { data } = useGetLikePostByPostId(post.id);
+  const [isOpen, setIsOpen] = React.useState(false);
 
   return (
-    <Card className="bg-[#1d232a] mt-4  rounded-md border-0  shadow-lg">
-      <CardContent className="p-0 flex flex-col gap-1">
-        {post && <HeaderCardPost post={post} />}
-        {post && <PostContent post={post} />}
-        <div className="my-3">
-          <div className="flex justify-between px-4">
-            <span className="text-sm text-white/60">
-              {data?.data.length || 0} likes
-            </span>
-            <span>2 comments</span>
+    <>
+    <DialogComment isOpen={isOpen} setIsOpen={setIsOpen} />
+      <Card className="bg-[#1d232a] mt-4  rounded-md border-0  shadow-lg">
+        <CardContent className="p-0 flex flex-col gap-1">
+          {post && <HeaderCardPost post={post} />}
+          {post && <PostContent post={post} />}
+          <div className="my-3">
+            <div className="flex justify-between px-4">
+              <span className="text-sm text-white/60">
+                {data?.data.length || 0} likes
+              </span>
+              <span>2 comments</span>
+            </div>
+            <Separator className="bg-gray-500" />
           </div>
-          <Separator className="bg-gray-500" />
-        </div>
-        <div className="flex justify-between px-4">
-          <LikePostButton post={post} like={data?.data || []} />
-          <Command />
-        </div>
-      </CardContent>
-    </Card>
+          <div className="flex justify-between px-4">
+            <LikePostButton post={post} like={data?.data || []} />
+            <Command onClick={() => setIsOpen(true)} />
+          </div>
+        </CardContent>
+      </Card>
+    </>
   );
 }
