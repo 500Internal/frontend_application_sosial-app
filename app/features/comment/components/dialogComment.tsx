@@ -4,13 +4,16 @@ import { AlertDialog, AlertDialogContent, AlertDialogFooter } from 'shared/shadc
 import { Input } from 'shared/shadcn/input'
 import { ScrollArea } from 'shared/shadcn/scroll-area'
 import RootCommentForm from './rootCommentForm'
+import type { PostType } from 'shared/types/postType'
+
 
 type Props = {
     isOpen: boolean,
     setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+    post:PostType
 }
 
-export default function DialogComment({ isOpen, setIsOpen }: Props) {
+export default function DialogComment({ isOpen, setIsOpen, post }: Props) {
   return (
     <>
     <AlertDialog open={isOpen} onOpenChange={setIsOpen} >
@@ -21,7 +24,7 @@ export default function DialogComment({ isOpen, setIsOpen }: Props) {
             
             </ScrollArea>
             <AlertDialogFooter className='my-3 flex items-center justify-center'>
-                <RootCommentForm />
+                <RootCommentForm postId={post.id} />
             </AlertDialogFooter>
         </AlertDialogContent>
     </AlertDialog>

@@ -3,7 +3,7 @@ import { apiClient } from "shared/helpers/apiClient";
 
 type createRootCommentType = {
     postId: string;
-    content: string;
+    comment: string;
 }
 
 export const createRootComment = async (data: createRootCommentType) => {
@@ -17,7 +17,7 @@ export const createRootComment = async (data: createRootCommentType) => {
 
 type createReplyCommentType = {
     commentId: string;
-    content: string;
+    comment: string;
     parentId: string;
     postId: string
 }

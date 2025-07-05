@@ -23,7 +23,7 @@ export default function ListPostCard({ post }: Props) {
 
   return (
     <>
-      <DialogComment isOpen={isOpen} setIsOpen={setIsOpen} />
+      <DialogComment post={post} isOpen={isOpen} setIsOpen={setIsOpen} />
       <Card className="bg-[#1d232a] mt-4  rounded-md border-0  shadow-lg">
         <CardContent className="p-0 flex flex-col gap-1">
           {post && <HeaderCardPost post={post} />}
