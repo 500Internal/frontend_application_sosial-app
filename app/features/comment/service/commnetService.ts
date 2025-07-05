@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query";
 import { apiClient } from "shared/helpers/apiClient";
 
 type createRootCommentType = {
@@ -27,4 +28,11 @@ export const createReplyComment = async (data: createReplyCommentType) => {
         url: "/comments/reply",
         data
     });
+};
+
+export const getCommentsCount= async (postId: string): Promise<{ data: number }> => {
+  return apiClient<{ data: number }>({
+    method: "GET",
+    url: `/comments/count/${postId}`,
+  });
 };

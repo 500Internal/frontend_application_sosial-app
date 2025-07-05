@@ -1,6 +1,6 @@
 import React from "react";
 import { ImageDefaultEnum } from "shared/enums/imageDefaultEnum";
-import { localDate } from "shared/helpers/localDate";
+import { timeAgo } from "shared/helpers/timeAgo";
 import { Avatar, AvatarFallback, AvatarImage } from "shared/shadcn/avatar";
 import type { PostType } from "shared/types/postType";
 
@@ -22,7 +22,7 @@ export default function HeaderCardPost({ post }: Props) {
           {post.user.profile.name}
         </h4>
         <span className="text-sm text-white/60">
-          {localDate(post.createdAt)}
+          {timeAgo(post.createdAt)}
         </span>
       </div>
     </section>
