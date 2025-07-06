@@ -27,14 +27,14 @@ export default function UpdateAvatarProfileForm({ profileByParams }: Props) {
   };
 
   // handle update profile
-  const handleUpdateProfile = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleUpdateAvatarProfile = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!uploadAvatar) return;
     updateAvatar({ avatarImage: uploadAvatar });
   };
 
   return (
-    <form onSubmit={handleUpdateProfile} className="flex relative">
+    <form onSubmit={handleUpdateAvatarProfile} className="flex relative">
       <AvatarBannerProfille
         profilePreview={preview as string}
         profileByParams={profileByParams}
