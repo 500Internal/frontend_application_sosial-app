@@ -30,3 +30,17 @@ export const updateAvatarProfile = async (data: UpdateAvatarProfileType) => {
     data: formData,
   });
 };
+
+interface UpdateBannerProfileType {
+  bannerImage: File;
+}
+
+export const updateBannerProfile = async (data:UpdateBannerProfileType ) => {
+  const formData = new FormData();
+  formData.append("banner", data.bannerImage);
+  return apiClient({
+    method: "PATCH",
+    url: "/profiles/banner",
+    data: formData,
+  });
+};
