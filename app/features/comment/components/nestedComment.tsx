@@ -1,6 +1,4 @@
 import React from "react";
-import { timeAgo } from "shared/helpers/timeAgo";
-import { Avatar, AvatarFallback, AvatarImage } from "shared/shadcn/avatar";
 import type { CommentType } from "shared/types/commentType";
 import AvatarComment from "./avatarComment";
 import BubbleComment from "./bubbleComment";

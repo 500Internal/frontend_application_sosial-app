@@ -6,6 +6,7 @@ export default [
     ]),
     layout("./layouts/mainLayout.tsx", [
         route("/beranda", "./routes/berandaRoute.tsx"),
+        route("/profile/:profileId", "./routes/detail/profileDetailRoute.tsx"),
     ]),
     ...prefix("auth",[
         route("/login", "./routes/loginRoute.tsx"),

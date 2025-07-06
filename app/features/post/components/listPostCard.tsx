@@ -2,9 +2,7 @@ import React from "react";
 import { Card, CardContent } from "shared/shadcn/card";
 import type { PostType } from "shared/types/postType";
 import { Separator } from "shared/shadcn/separator";
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { Button } from "shared/shadcn/button";
-import { Command, ThumbsUp } from "lucide-react";
+import { Command, MessageCircle, ThumbsUp } from "lucide-react";
 import PostContent from "~/features/post/components/postContent";
 import LikePostButton from "./likePostButton";
 import HeaderCardPost from "~/features/post/components/headerCardPost";
@@ -41,7 +39,7 @@ export default function ListPostCard({ post }: Props) {
           </div>
           <div className="flex justify-between px-4">
             <LikePostButton post={post} like={data?.data || []} />
-            <Command onClick={() => setIsOpen(true)} />
+            <MessageCircle className="text-white/60" onClick={() => setIsOpen(true)} />
           </div>
         </CardContent>
       </Card>
