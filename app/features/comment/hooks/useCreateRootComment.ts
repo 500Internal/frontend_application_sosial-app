@@ -8,9 +8,9 @@ export const useCreateRootComment = (postId: string) => {
     const {mutate: addRootComment, isPending: isPendingRootComment} = useMutation({
         mutationFn: createRootComment,
         onSuccess: () => {
-            // queryClient.invalidateQueries({
-            //     queryKey: ['comments', postId],
-            // })
+            queryClient.invalidateQueries({
+                queryKey: ['commentNested', postId],
+            })
         },
         onError: () => {
             toast.error('Gagal menambahkan komentar')
