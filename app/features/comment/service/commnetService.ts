@@ -36,3 +36,10 @@ export const getCommentsCount= async (postId: string): Promise<{ data: number }>
     url: `/comments/count/${postId}`,
   });
 };
+
+export const getNestedComments = async (postId: string): Promise<{ data: any }> => {
+  return apiClient<{ data: any }>({
+    method: "GET",
+    url: `/comments/${postId}`,
+  });
+}
