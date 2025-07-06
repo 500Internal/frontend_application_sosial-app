@@ -1,9 +1,11 @@
 import React from 'react'
 import { useParams } from 'react-router';
+import BannerProfile from '~/features/profile/components/bannerProfile';
 
 export default function ProfileDetailPage() {
-  const { profileId } = useParams();
   return (
-    <div>profileDetailPage {profileId}</div>
+    <div className='flex justify-center '>
+      <BannerProfile />
+    </div>
   )
 }
