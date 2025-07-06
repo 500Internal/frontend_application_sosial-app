@@ -6,13 +6,14 @@ import { useGetProfileByParams } from "../hooks/useGetProfileByParams";
 import { Avatar, AvatarFallback, AvatarImage } from "shared/shadcn/avatar";
 import { ImageDefaultEnum } from "shared/enums/imageDefaultEnum";
 import AvatarBannerProfille from "./avatarBannerProfille";
+import BannerSkeleton from "shared/ui/skeletons/bannerSkeleton";
 
 export default function BannerProfile() {
   const { profileId } = useParams();
   const { data: profile } = useGetProfile();
   const { data: profileByParams } = useGetProfileByParams(profileId!);
   //sekeleton
-  if  (!profile || !profileByParams) return 
+  if  (!profile || !profileByParams) return <BannerSkeleton />
   return (
     <section className="w-full relative">
       <AspectRatio ratio={16 / 7} className="bg-muted rounded-sm">

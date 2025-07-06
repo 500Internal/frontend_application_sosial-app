@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "shared/shadcn/button";
-import { PostSkeleton } from "../../../../shared/ui/skeletons/postSekeleton";
+import { PostSkeleton } from "../../../../shared/ui/skeletons/postSkeleton";
 import { RefreshCcw } from "lucide-react";
 
 type Props = {

@@ -1,7 +1,7 @@
 import React from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { getPosts } from "~/features/post/service/postService";
-import { PostSkeleton } from "../skeletons/postSekeleton";
+import { PostSkeleton } from "../skeletons/postSkeleton";
 import LoadButton from "../../../app/features/post/components/loadButton";
 import ListPostCard from "~/features/post/components/listPostCard";
 
