@@ -1,0 +1,59 @@
+import React from "react";
+import type { ProfileType } from "shared/types/profileType";
+import AvatarBannerProfille from "./avatarBannerProfille";
+import UploadImageButton from "shared/ui/button/uploadImageButton";
+type Props = {
+  profileByParams: ProfileType;
+};
+export default function UpdateProfileForm({ profileByParams }: Props) {
+  const [uploadAvatar, setUploadAvatar] = React.useState<File>();
+  const [preview, setPreview] = React.useState<File | string>();
+
+  const handlePreview = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (!files) return;
+    const urls = Array.from(files).map((file) => URL.createObjectURL(file));
+    setUploadAvatar(files[0]);
+    setPreview(urls[0]);
+  };
+
+  const handleRemovePreview = () => {
+    setUploadAvatar(undefined);
+    setPreview(undefined);
+  };
+
+  const handleUpdateProfile = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(uploadAvatar);
+  };
+
+  return (
+    <form onSubmit={handleUpdateProfile} className="flex relative">
+      <AvatarBannerProfille
+        profilePreview={preview as string}
+        profileByParams={profileByParams}
+      />
+      <div className="flex absolute bottom-3 left-36">
+        {uploadAvatar ? (
+          <div className="flex">
+            <button
+              type="submit"
+              className="bg-blue-500 text-white px-4 py-2 rounded-md"
+            >
+              Simpan
+            </button>
+            <button
+              type="button"
+              onClick={handleRemovePreview}
+              className="bg-red-500 text-white px-4 py-2 rounded-md ml-2"
+            >
+              Hapus
+            </button>
+          </div>
+        ) : (
+          <UploadImageButton setImage={handlePreview} />
+        )}
+      </div>
+    </form>
+  );
+}

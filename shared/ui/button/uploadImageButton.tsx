@@ -6,7 +6,9 @@ export type UploadImageButtonProps = {
   setImage: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-export default function UploadPostButton({ setImage }: UploadImageButtonProps) {
+export default function UploadImageButton({
+  setImage,
+}: UploadImageButtonProps) {
   return (
     <div>
       <Label className="relative">

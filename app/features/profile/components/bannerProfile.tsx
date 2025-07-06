@@ -7,6 +7,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "shared/shadcn/avatar";
 import { ImageDefaultEnum } from "shared/enums/imageDefaultEnum";
 import AvatarBannerProfille from "./avatarBannerProfille";
 import BannerSkeleton from "shared/ui/skeletons/bannerSkeleton";
+import UpdateProfileForm from "./updateProfileForm";
 
 export default function BannerProfile() {
   const { profileId } = useParams();
@@ -25,7 +26,7 @@ export default function BannerProfile() {
         />
       </AspectRatio>
       {profile!.data && profileByParams!.data ? (
-        <AvatarBannerProfille profileByParams={profileByParams!.data || null} />
+        <UpdateProfileForm profileByParams={profileByParams!.data} />
       ) : (
         <p>saa</p>
       )}

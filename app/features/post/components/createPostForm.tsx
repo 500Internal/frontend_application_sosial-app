@@ -2,12 +2,12 @@ import React from "react";
 import { Button } from "shared/shadcn/button";
 import { Input } from "shared/shadcn/input";
 import { Separator } from "shared/shadcn/separator";
-import UploadPostButton from "./uploadPostButton";
 import { Trash } from "lucide-react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createPost } from "~/features/post/service/postService";
 import { toast } from "sonner";
 import { useCreatePost } from "../hooks/useCreatePost";
+import UploadImageButton from "../../../../shared/ui/button/uploadImageButton";
 
 export default function CreatePostForm() {
   const [caption, setCaption] = React.useState<string>("");
@@ -80,7 +80,7 @@ export default function CreatePostForm() {
         ))}
         <Separator orientation="horizontal" className="bg-gray-600" />
         <div className="flex items-center justify-between px-4">
-          <UploadPostButton
+          <UploadImageButton
             setImage={(e) => {
               hadlePreview(e);
             }}
