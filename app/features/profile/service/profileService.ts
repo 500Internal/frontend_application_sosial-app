@@ -14,3 +14,11 @@ export const getProfileByParams = async (paramsId: string): Promise<{ data: Prof
     url: `/profiles/${paramsId}`,
   });
 };
+
+export const updateAvatarProfile = async (data: FormData): Promise<{ data: ProfileType }> => {
+  return apiClient<{ data: ProfileType }>({
+    method: "PATCH",
+    url: "/profiles/avatar",
+    data,
+  });
+};

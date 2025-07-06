@@ -4,7 +4,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "shared/shadcn/avatar";
 import type { ProfileType } from "shared/types/profileType";
 type Props = {
     profileByParams: ProfileType;
-    profilePreview: string | undefined;
+    profilePreview?: string | undefined;
 };
 export default function AvatarBannerProfille({ profileByParams, profilePreview }: Props) {
   return (

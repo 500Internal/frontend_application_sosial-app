@@ -5,10 +5,11 @@ import UploadImageButton from "shared/ui/button/uploadImageButton";
 type Props = {
   profileByParams: ProfileType;
 };
-export default function UpdateProfileForm({ profileByParams }: Props) {
+export default function UpdateAvatarProfileForm({ profileByParams }: Props) {
   const [uploadAvatar, setUploadAvatar] = React.useState<File>();
   const [preview, setPreview] = React.useState<File | string>();
 
+  // handle preview untuk ambil file yang di upload dari input onChange
   const handlePreview = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (!files) return;
@@ -17,11 +18,13 @@ export default function UpdateProfileForm({ profileByParams }: Props) {
     setPreview(urls[0]);
   };
 
+  // handle remove preview untuk menghapus preview file
   const handleRemovePreview = () => {
     setUploadAvatar(undefined);
     setPreview(undefined);
   };
 
+  // handle update profile
   const handleUpdateProfile = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(uploadAvatar);
