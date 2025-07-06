@@ -1,7 +1,7 @@
 import type { UserType } from "./userType"
 
 export type ProfileType = {
-    id: number
+    id: string
     avatarImage: string
     bannerImage: string
     name: string

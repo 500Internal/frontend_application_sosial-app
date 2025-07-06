@@ -2,12 +2,14 @@ import React from "react";
 import type { ProfileType } from "shared/types/profileType";
 import AvatarBannerProfille from "./avatarBannerProfille";
 import UploadImageButton from "shared/ui/button/uploadImageButton";
+import { useUpdateAvatarProfile } from "../hooks/useUpdateAvatarProfile";
 type Props = {
   profileByParams: ProfileType;
 };
 export default function UpdateAvatarProfileForm({ profileByParams }: Props) {
   const [uploadAvatar, setUploadAvatar] = React.useState<File>();
   const [preview, setPreview] = React.useState<File | string>();
+  const {updateAvatar} = useUpdateAvatarProfile(profileByParams.id);
 
   // handle preview untuk ambil file yang di upload dari input onChange
   const handlePreview = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,7 +29,8 @@ export default function UpdateAvatarProfileForm({ profileByParams }: Props) {
   // handle update profile
   const handleUpdateProfile = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(uploadAvatar);
+    if (!uploadAvatar) return;
+    updateAvatar({ avatarImage: uploadAvatar });
   };
 
   return (

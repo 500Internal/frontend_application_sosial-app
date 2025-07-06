@@ -15,10 +15,18 @@ export const getProfileByParams = async (paramsId: string): Promise<{ data: Prof
   });
 };
 
-export const updateAvatarProfile = async (data: FormData): Promise<{ data: ProfileType }> => {
-  return apiClient<{ data: ProfileType }>({
+interface UpdateAvatarProfileType {
+  avatarImage: File;
+}
+
+
+export const updateAvatarProfile = async (data: UpdateAvatarProfileType) => {
+  const formData = new FormData();
+  formData.append("avatar", data.avatarImage);
+  console.log(data.avatarImage);
+  return apiClient({
     method: "PATCH",
     url: "/profiles/avatar",
-    data,
+    data: formData,
   });
 };
