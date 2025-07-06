@@ -9,9 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "shared/shadcn/dropdown-menu";
 import type { ProfileType } from "shared/types/profileType";
-import LogoutButton from "../../auth/components/logoutButton";
 import { Separator } from "shared/shadcn/separator";
-import { Outlet } from "react-router";
 
 type Props = {
   profile: ProfileType;
