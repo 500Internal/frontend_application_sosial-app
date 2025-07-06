@@ -1,6 +1,7 @@
 import React from "react";
 import { timeAgo } from "shared/helpers/timeAgo";
 import type { CommentType } from "shared/types/commentType";
+import ReplyButton from "./replyButton";
 type Props = {
   comment: CommentType;
 };
@@ -16,6 +17,7 @@ export default function BubbleComment({ comment }: Props) {
       <p className="text-sm whitespace-pre-wrap break-words">
         {comment.comment}
       </p>
+      <ReplyButton commentId={comment.id} postId={comment.postId} />
     </section>
   );
 }

@@ -19,7 +19,6 @@ export const createRootComment = async (data: createRootCommentType) => {
 type createReplyCommentType = {
     commentId: string;
     comment: string;
-    parentId: string;
     postId: string
 }
 
