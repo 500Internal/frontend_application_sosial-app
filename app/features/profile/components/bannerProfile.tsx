@@ -25,6 +25,11 @@ export default function BannerProfile() {
     setBannerImage(files[0]);
     setPreview(urls[0]);
   };
+
+  const handleRemovePreview = () => {
+    setBannerImage(null);
+    setPreview(null);
+  }
   return (
     <section className="w-full relative">
       <AspectRatio ratio={16 / 7} className="bg-muted rounded-sm">
@@ -37,13 +42,19 @@ export default function BannerProfile() {
       </AspectRatio>
       {profile!.data.userId === profileByParams!.data.userId &&
       profileByParams!.data ? (
-          <UpdateAvatarProfileForm profileByParams={profileByParams!.data} />
-        ) : (
-          <AvatarBannerProfille profileByParams={profileByParams!.data} />
+        <UpdateAvatarProfileForm profileByParams={profileByParams!.data} />
+      ) : (
+        <AvatarBannerProfille profileByParams={profileByParams!.data} />
       )}
       {profile!.data.userId === profileByParams!.data.userId &&
       profileByParams!.data ? (
-        <UpdateProfileBannerForm bannerImage={bannerImage ?? undefined} handlePreview={(e) => handlePreview(e)} preview={preview || ""} />
+        <UpdateProfileBannerForm
+          paramsId={profileByParams!.data.id}
+          bannerImage={bannerImage ?? undefined}
+          handlePreview={(e) => handlePreview(e)}
+          preview={preview || ""}
+          handleRemovePreview={handleRemovePreview}
+        />
       ) : null}
     </section>
   );
