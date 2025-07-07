@@ -17,7 +17,7 @@ export default function BubbleComment({ comment }: Props) {
       <p className="text-sm whitespace-pre-wrap break-words">
         {comment.comment}
       </p>
-      <ReplyButton commentId={comment.id} postId={comment.postId} />
+      <ReplyButton receiverId={comment.userId} commentId={comment.id} postId={comment.postId} />
     </section>
   );
 }

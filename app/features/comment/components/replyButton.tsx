@@ -4,10 +4,11 @@ import ReplyCommentForm from "./replyCommentForm";
 
 type Props = {
     commentId: string;
-    postId:string
+    postId:string,
+    receiverId:string
 };
 
-export default function ReplyButton({ commentId,postId }: Props) {
+export default function ReplyButton({ commentId,postId,receiverId }: Props) {
     const [isOpen, setIsOpen] = React.useState(false);
   return (
     <>
@@ -17,7 +18,7 @@ export default function ReplyButton({ commentId,postId }: Props) {
         </button>
       </div>
       {isOpen && 
-      <ReplyCommentForm setIsOpen={setIsOpen}  postId={postId} commentId={commentId} />
+      <ReplyCommentForm receiverId={receiverId} setIsOpen={setIsOpen}  postId={postId} commentId={commentId} />
       }
     </>
   );

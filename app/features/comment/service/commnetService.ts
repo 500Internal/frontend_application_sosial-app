@@ -21,6 +21,7 @@ type createReplyCommentType = {
     commentId: string;
     comment: string;
     postId: string
+    receiverId: string
 }
 
 export const createReplyComment = async (data: createReplyCommentType) => {

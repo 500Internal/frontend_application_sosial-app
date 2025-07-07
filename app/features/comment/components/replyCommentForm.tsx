@@ -7,20 +7,22 @@ type Props = {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   commentId: string;
   postId: string;
+  receiverId: string
 };
 
 export default function ReplyCommentForm({
   setIsOpen,
   commentId,
   postId,
+  receiverId
 }: Props) {
   const [comment, setComment] = React.useState("");
   const { addReplyComment, isPendingReplyComment } =
-    useCreateReplyComment(postId);
+  useCreateReplyComment(postId);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    addReplyComment({ commentId, comment, postId });
+    addReplyComment({ commentId, comment, postId, receiverId });
     setIsOpen(false);
     setComment("");
   };
