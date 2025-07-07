@@ -7,3 +7,10 @@ export const createPostBookmark = async (postId: string) => {
         data: { postId },
     });
 };
+
+export const deletePostBookmark = async (bookmarkId: string) => {
+    return apiClient<void>({
+        method: "DELETE",
+        url: `/bookmarks/${bookmarkId}`,
+    });
+};
