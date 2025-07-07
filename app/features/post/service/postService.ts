@@ -86,12 +86,13 @@ export const getLikePostByPostId = async (
 };
 
 export const createPostLike = async (
-  postId: string
+  postId: string,
+  receiverId : string
 ): Promise<{ data: LikeType }> => {
   return apiClient<{ data: LikeType }>({
     method: "POST",
     url: `/likes`,
-    data: { postId },
+    data: { postId, receiverId },
   });
 };
 

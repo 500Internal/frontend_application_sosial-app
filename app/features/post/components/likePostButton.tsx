@@ -14,7 +14,7 @@ export default function LikePostButton({ post, like }: Props) {
   //session
   const { data } = useSession();
   const isLiked = like.some((l) => l.userId === data?.data.id);
-  const { addLike } = useCreateLikePost(post.id);
+  const { addLike } = useCreateLikePost(post.id,post.userId);
   const { removeLike } = useDeleteLikePost(post.id);
   const handleLike = () => {
     if (isLiked) {
