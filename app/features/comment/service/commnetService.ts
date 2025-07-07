@@ -5,6 +5,7 @@ import type { CommentType } from "shared/types/commentType";
 type createRootCommentType = {
     postId: string;
     comment: string;
+    receiverId: string
 }
 
 export const createRootComment = async (data: createRootCommentType) => {

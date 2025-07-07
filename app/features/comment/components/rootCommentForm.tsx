@@ -4,13 +4,13 @@ import { Button } from "shared/shadcn/button";
 import { Input } from "shared/shadcn/input";
 import { useCreateRootComment } from "../hooks/useCreateRootComment";
 
-export default function RootCommentForm({ postId }: { postId: string }) {
+export default function RootCommentForm({ postId,receiverId }: { postId: string, receiverId: string }) {
   const [comment, setComment] = React.useState("");
   const { addRootComment, isPendingRootComment } = useCreateRootComment(postId);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    addRootComment({ comment, postId });
+    addRootComment({ comment, postId, receiverId });
     setComment("");
   };
 

@@ -27,7 +27,7 @@ export default function DialogComment({ isOpen, setIsOpen, post }: Props) {
                 <NestedComment comments={nestedComment?.data || []}/>
             </ScrollArea>
             <AlertDialogFooter className='my-3 flex items-center justify-center'>
-                <RootCommentForm postId={post.id} />
+                <RootCommentForm receiverId={post.userId} postId={post.id} />
             </AlertDialogFooter>
         </AlertDialogContent>
     </AlertDialog>
