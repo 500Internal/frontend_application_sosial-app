@@ -51,6 +51,30 @@ export const getPosts = async ({
     meta: res.data.meta,
   };
 };
+export const getPostsByParams = async ({
+  pageParam = 1,
+  paramsId,
+}: { pageParam: number; paramsId: string }): Promise<{
+  data: PostPaginationType;
+  meta: MetaPostPaginationType;
+  posts: PostType[];
+}> => {
+  const res = await apiClient<{
+    data: PostPaginationType;
+    meta: MetaPostPaginationType;
+    posts: PostType[];
+  }>({
+    method: "GET",
+    url: `/posts/params/${paramsId}`,
+    params: { page: pageParam },
+  });
+
+  return {
+    data: res.data,
+    posts: res.data.data,
+    meta: res.data.meta,
+  };
+};
 
 export const getLikePostByPostId = async (
   postId: string
