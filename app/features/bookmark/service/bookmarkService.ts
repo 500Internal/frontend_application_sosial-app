@@ -1,4 +1,5 @@
 import { apiClient } from "shared/helpers/apiClient";
+import type { BookmarkType } from "shared/types/bookmarkType";
 
 export const createPostBookmark = async (postId: string) => {
     return apiClient<void>({
@@ -14,3 +15,10 @@ export const deletePostBookmark = async (bookmarkId: string) => {
         url: `/bookmarks/${bookmarkId}`,
     });
 };
+
+export const getBookmarkByPostId = async (postId: string):Promise<{data:BookmarkType}> => {
+    return apiClient<{data:BookmarkType}>({
+        method: "GET",
+        url: `/bookmarks/post/${postId}`,
+    });
+}
