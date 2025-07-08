@@ -2,13 +2,14 @@ import React from "react";
 import { Card, CardContent } from "shared/shadcn/card";
 import type { PostType } from "shared/types/postType";
 import { Separator } from "shared/shadcn/separator";
-import { Command, MessageCircle, ThumbsUp } from "lucide-react";
+import { Command, ListCollapse, MessageCircle, ThumbsUp } from "lucide-react";
 import PostContent from "~/features/post/components/postContent";
 import LikePostButton from "./likePostButton";
 import HeaderCardPost from "~/features/post/components/headerCardPost";
 import { useGetLikePostByPostId } from "../hooks/useGetLikePostByPostId";
 import DialogComment from "~/features/comment/components/dialogComment";
 import { useGetCommentCount } from "~/features/comment/hooks/useGetCommentCount";
+import DropdownElippsisPostCard from "./dropdownElippsisPostCard";
 
 export type Props = {
   post: PostType;
@@ -24,7 +25,10 @@ export default function ListPostCard({ post }: Props) {
       <DialogComment post={post} isOpen={isOpen} setIsOpen={setIsOpen} />
       <Card className="bg-[#1d232a] mt-4  rounded-md border-0  shadow-lg">
         <CardContent className="p-0 flex flex-col gap-1">
-          {post && <HeaderCardPost post={post} />}
+          <div className="flex justify-between">
+            <HeaderCardPost post={post} />
+            <DropdownElippsisPostCard />
+          </div>
           {post && <PostContent post={post} />}
           <div className="my-3">
             <div className="flex justify-between px-4">
