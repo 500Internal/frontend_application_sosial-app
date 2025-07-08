@@ -40,12 +40,14 @@ export default function BookmarkButton({ post }: Props) {
   return (
     <button
       onClick={handleBookmark}
-      className="flex p-1 rounded hover:bg-amber-50/25 items-center gap-2"
+      className={`flex p-1 rounded hover:bg-amber-50/25 items-center gap-2 transition-all duration-200 ease-in-out ${
+        isBookmark ? 'bg-amber-50/25' : ''
+      }`}
     >
       <Bookmark
         size={25}
-        className={`text-white/60 ${
-          isBookmark ? 'text-amber-400 fill-amber-500' : ''
+        className={` ${
+          isBookmark ? 'text-amber-500 fill-amber-500 ' : 'text-white/60'
         }`}
       />
     </button>
