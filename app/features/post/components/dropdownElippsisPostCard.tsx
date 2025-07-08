@@ -1,9 +1,14 @@
 import { Ellipsis } from 'lucide-react'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuLabel, DropdownMenuTrigger } from 'shared/shadcn/dropdown-menu'
 import { Separator } from 'shared/shadcn/separator'
+import type { PostType } from 'shared/types/postType'
 import BookmarkButton from '~/features/bookmark/components/bookmarkButton'
 
-export default function DropdownElippsisPostCard() {
+type Props = {
+  post:PostType
+}
+
+export default function DropdownElippsisPostCard({ post }: Props) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className='p-2 text-white/70'>
@@ -13,7 +18,7 @@ export default function DropdownElippsisPostCard() {
         <DropdownMenuLabel className="text-white/60">Actions</DropdownMenuLabel>
         <Separator className="bg-gray-600" />
         <DropdownMenuGroup className="flex flex-col gap-2 p-2">
-            <BookmarkButton />
+            <BookmarkButton post={post} />
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>

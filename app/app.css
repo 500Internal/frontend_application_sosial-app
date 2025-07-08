@@ -1,6 +1,14 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+
+::-webkit-scrollbar {
+  display: none;
+}
+body {
+  scrollbar-width: none; /* Firefox */
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme {

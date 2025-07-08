@@ -27,7 +27,7 @@ export default function ListPostCard({ post }: Props) {
         <CardContent className="p-0 flex flex-col gap-1">
           <div className="flex justify-between">
             <HeaderCardPost post={post} />
-            <DropdownElippsisPostCard />
+            <DropdownElippsisPostCard post={post} />
           </div>
           {post && <PostContent post={post} />}
           <div className="my-3">
