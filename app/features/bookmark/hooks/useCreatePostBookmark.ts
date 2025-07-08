@@ -8,9 +8,9 @@ export const useCreatePostBookmark = (postId: string) => {
     const { mutate: addBookmark } = useMutation({
         mutationFn: () => createPostBookmark(postId),
         onSuccess: () => {
-            // queryClient.invalidateQueries({
-            //     queryKey: ["bookmark"],
-            // });
+            queryClient.invalidateQueries({
+                queryKey: ["bookmark", postId],
+            });
             toast.success("Postingan berhasil disimpan");
         },
     });
