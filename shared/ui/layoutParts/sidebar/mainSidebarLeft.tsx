@@ -8,7 +8,7 @@ import ProfileButton from "~/features/profile/components/profileButton";
 const navItems = [
   { name: "teman", href: "/teman", icon: <FaUserFriends /> },
   { name: "group", href: "/group", icon: <FaUsers /> },
-  { name: "tersimpan", href: "/tersimpan", icon: <FaBookmark /> },
+  { name: "tersimpan", href: "/bookmark", icon: <FaBookmark /> },
 ];
 
 type Props = {
