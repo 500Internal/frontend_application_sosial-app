@@ -1,3 +1,4 @@
+import { createCookie } from "react-router";
 import { apiClient } from "shared/helpers/apiClient";
 import type { BookmarkType } from "shared/types/bookmarkType";
 
@@ -23,8 +24,8 @@ export const getBookmarkByPostId = async (postId: string):Promise<{data:Bookmark
     });
 }
 
-export const getBookmark = async ():Promise<{data:BookmarkType}> => {
-    return apiClient<{data:BookmarkType}>({
+export const getBookmark = async ():Promise<{data:BookmarkType[]}> => {
+    return apiClient<{data:BookmarkType[]}>({
         method: "GET",
         url: "/bookmarks",
     });
