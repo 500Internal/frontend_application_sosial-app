@@ -1,7 +1,6 @@
 import React from 'react'
+import BookmarkPage from '~/pages/bookmarkPage'
 
 export default function BookmarkRoute() {
-  return (
-    <div>bookmarkRoute</div>
-  )
+  return <BookmarkPage />
 }

@@ -22,3 +22,10 @@ export const getBookmarkByPostId = async (postId: string):Promise<{data:Bookmark
         url: `/bookmarks/post/${postId}`,
     });
 }
+
+export const getBookmark = async ():Promise<{data:BookmarkType}> => {
+    return apiClient<{data:BookmarkType}>({
+        method: "GET",
+        url: "/bookmarks",
+    });
+}
