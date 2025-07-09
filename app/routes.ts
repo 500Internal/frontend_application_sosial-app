@@ -8,6 +8,7 @@ export default [
         route("/beranda", "./routes/berandaRoute.tsx"),
         route("/profile/:profileId", "./routes/detail/profileDetailRoute.tsx"),
         route("/bookmark", "./routes/bookmarkRoute.tsx"),
+        route("/notification", "./routes/notificationRoute.tsx"),
     ]),
     ...prefix("auth",[
         route("/login", "./routes/loginRoute.tsx"),
