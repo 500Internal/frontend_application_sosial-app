@@ -2,15 +2,16 @@ import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { updateAllNotifications } from "../service/notificationService"
 import { toast } from "sonner"
 
-export const useUpdateAllNotification = () => {
+export const useUpdateAllNotification = (onSuccess: () => void) => {
     const queryClient = useQueryClient()
-    const {mutate: updateAllNotification}=useMutation({
+    const {mutate: updateAllNotification,isPending: isPendingUpdateNotification}=useMutation({
         mutationFn: updateAllNotifications,
         onSuccess: () => {
             toast.success("Notifikasi berhasil dibaca");
             queryClient.invalidateQueries({
                 queryKey: ["allNotifications"],
             });
+            onSuccess();
         },
         onError: () => {
             toast.error("Notifikasi gagal dibaca");
@@ -18,5 +19,5 @@ export const useUpdateAllNotification = () => {
         mutationKey: ["updateAllNotifications"],
     })
 
-    return {updateAllNotification}
+    return {updateAllNotification,isPendingUpdateNotification}
 }
