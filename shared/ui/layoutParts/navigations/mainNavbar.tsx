@@ -8,6 +8,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "shared/shadcn/tooltip";
 import ProfildropDown from "../../../../app/features/profile/components/profilDropdown";
 import type { ProfileType } from "shared/types/profileType";
 import LogoutButton from "../../../../app/features/auth/components/logoutButton";
+import { useGetNotificationUnread } from "~/features/notification/hooks/useGetNotificationUnread";
 
 type Props = {
   profile: ProfileType;
@@ -32,6 +33,7 @@ export default function Navbar({ profile }: Props) {
     },
   ];
 
+  const {data: notificationUnread} = useGetNotificationUnread();
   return (
     <nav className="flex fixed top-0 left-0 right-0 z-50 bg-[#1d232a] items-center justify-between px-5 py-2 shadow-md">
       <div className="hidden sm:flex items-center gap-3 flex-1">
@@ -71,8 +73,9 @@ export default function Navbar({ profile }: Props) {
       <div className="flex items-center gap-4 justify-end flex-1">
         <Tooltip>
           <TooltipTrigger asChild>
-            <div className="hover:bg-gray-800 p-2 rounded-full">
+            <div className="hover:bg-gray-800 relative p-2 rounded-full">
               <IoNotifications className="text-2xl text-gray-500" />
+              <p className="absolute top-0 right-0 bg-red-500 w-4 h-4 rounded-full flex items-center justify-center text-xs">{notificationUnread?.data || 0}</p>
             </div>
           </TooltipTrigger>
           <TooltipContent>Notifikasi</TooltipContent>
