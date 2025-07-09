@@ -1,4 +1,3 @@
-import React from 'react'
 import NotificationPage from '~/pages/notificationPage'
 
 export default function NotificationRoute() {

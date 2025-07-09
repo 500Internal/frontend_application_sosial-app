@@ -14,3 +14,10 @@ export const getNotificationUnread = async (): Promise<{ data: number }> => {
         url: "/notifications/count",
     });
 };
+
+export const getAllNotifications = async (): Promise<{ data: NotificationType[] }> => {
+    return apiClient<{ data: NotificationType[] }>({
+        method: "GET",
+        url: "/notifications",
+    });
+};
