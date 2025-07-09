@@ -69,7 +69,7 @@ function badgeExpression(type: NotificationType["type"]) {
               {badgeExpression(notification.type)}
             </div>
           </div>
-          <div className="ml-12 text-sm text-white/80 line-clamp-2">
+          <div className="ml-12 text-sm text-white/80 line-clamp-1 overflow-hidden">
             {notification.message}
           </div>
           {i !== notifications.length - 1 && (
