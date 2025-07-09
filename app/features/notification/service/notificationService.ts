@@ -21,3 +21,10 @@ export const getAllNotifications = async (): Promise<{ data: NotificationType[] 
         url: "/notifications",
     });
 };
+
+export const updateAllNotifications = async (): Promise<void> => {
+    return apiClient<void>({
+        method: "PATCH",
+        url: "/notifications",
+    });
+}
