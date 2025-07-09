@@ -7,3 +7,10 @@ export const getSomeNotifications = async (): Promise<{ data: NotificationType[]
         url: "/notifications/some",
     });
 };
+
+export const getNotificationUnread = async (): Promise<{ data: number }> => {
+    return apiClient<{ data: number }>({
+        method: "GET",
+        url: "/notifications/count",
+    });
+};
