@@ -1,7 +1,6 @@
 import React from 'react'
+import NotificationPage from '~/pages/notificationPage'
 
 export default function NotificationRoute() {
-  return (
-    <div>notificationRoute</div>
-  )
+  return <NotificationPage />
 }

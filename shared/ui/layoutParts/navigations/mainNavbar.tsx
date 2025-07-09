@@ -2,7 +2,7 @@ import { Search } from "lucide-react";
 import { FaHome, FaUserFriends } from "react-icons/fa";
 import { FaUsers } from "react-icons/fa6";
 import { IoNotifications } from "react-icons/io5";
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import { Input } from "shared/shadcn/input";
 import { Tooltip, TooltipContent, TooltipTrigger } from "shared/shadcn/tooltip";
 import ProfildropDown from "../../../../app/features/profile/components/profilDropdown";
@@ -32,6 +32,8 @@ export default function Navbar({ profile }: Props) {
       icon: <FaUsers />,
     },
   ];
+
+  const nav = useNavigate();
 
   const {data: notificationUnread} = useGetNotificationUnread();
   return (
@@ -73,7 +75,7 @@ export default function Navbar({ profile }: Props) {
       <div className="flex items-center gap-4 justify-end flex-1">
         <Tooltip>
           <TooltipTrigger asChild>
-            <div className="hover:bg-gray-800 relative p-2 rounded-full">
+            <div onClick={() => nav("/notification")} className="hover:bg-gray-800 relative p-2 rounded-full">
               <IoNotifications className="text-2xl text-gray-500" />
               <p className="absolute top-0 right-0 bg-red-500 w-4 h-4 rounded-full flex items-center justify-center text-xs">{notificationUnread?.data || 0}</p>
             </div>
