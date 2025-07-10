@@ -6,9 +6,9 @@ import type { ProfileType } from "shared/types/profileType";
 import ProfileButton from "~/features/profile/components/profileButton";
 
 const navItems = [
-  { name: "teman", href: "/teman", icon: <FaUserFriends /> },
-  { name: "group", href: "/group", icon: <FaUsers /> },
-  { name: "tersimpan", href: "/bookmark", icon: <FaBookmark /> },
+  { name: "Add Mutual", href: "/mutual", icon: <FaUserFriends /> },
+  { name: "Group", href: "/group", icon: <FaUsers /> },
+  { name: "Tersimpan", href: "/bookmark", icon: <FaBookmark /> },
 ];
 
 type Props = {

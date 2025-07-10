@@ -9,6 +9,7 @@ export default [
         route("/profile/:profileId", "./routes/detail/profileDetailRoute.tsx"),
         route("/bookmark", "./routes/bookmarkRoute.tsx"),
         route("/notification", "./routes/notificationRoute.tsx"),
+        route("/mutual", "./routes/mutualRoute.tsx"),
     ]),
     ...prefix("auth",[
         route("/login", "./routes/loginRoute.tsx"),
