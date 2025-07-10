@@ -1,13 +1,17 @@
 import React from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { getPosts, getPostsByParams } from "~/features/post/service/postService";
+import {
+  getPosts,
+  getPostsByParams,
+} from "~/features/post/service/postService";
 import { PostSkeleton } from "../skeletons/postSkeleton";
 import LoadButton from "../../../app/features/post/components/loadButton";
 import ListPostCard from "~/features/post/components/listPostCard";
 import { useParams } from "react-router";
+import UserPostNotFound from "../notFound/userPostNotFound";
 
 export default function InfiniteScrollPostDetail() {
-  const {profileId} = useParams();
+  const { profileId } = useParams();
   if (!profileId) return undefined;
   //inifiniteQuery
   const {
@@ -18,7 +22,7 @@ export default function InfiniteScrollPostDetail() {
     status,
   } = useInfiniteQuery({
     queryKey: ["posts"],
-    queryFn: ()=> getPostsByParams({ paramsId: profileId,pageParam: 1 }),
+    queryFn: () => getPostsByParams({ paramsId: profileId, pageParam: 1 }),
     initialPageParam: 1,
     getNextPageParam: (lastPage) => {
       const currentPage = lastPage.meta.currentPage;
@@ -29,16 +33,28 @@ export default function InfiniteScrollPostDetail() {
 
   if (status === "pending") return <PostSkeleton />;
 
+  // cari semua post
+  const allPosts = posts?.pages.flatMap((page) => page.posts);
+
   return (
     <div className="flex flex-col gap-4">
-      {posts?.pages.map((page, index) => (
+      {/* {posts?.pages.map((page, index) => (
         <div key={index} className="flex flex-col gap-4">
           {status === "success" &&
             page.posts.map((post) => (
               <ListPostCard key={post.id} post={post} />
             ))}
         </div>
-      ))}
+      ))} */}
+      {allPosts?.length === 0 ? (
+        <UserPostNotFound />
+      ) : (
+        allPosts?.map((post) => (
+          <div key={post.id} className="flex flex-col gap-4">
+            <ListPostCard post={post} />
+          </div>
+        ))
+      )}
       {hasNextPage && (
         <div className="flex justify-center">
           <LoadButton
