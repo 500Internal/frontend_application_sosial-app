@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query"
 import { getUserNotFollower } from "../service/userService"
 
-export const useGetUserNotFollowing = () => {
+export const useGetUserNotFollower = () => {
     return useQuery({
-        queryKey: ["userNotFollowing"],
+        queryKey: ["userNotFollower"],
         queryFn: getUserNotFollower,
     })
 }

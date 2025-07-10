@@ -27,6 +27,7 @@ export default function LogoutButton() {
   return (
     <>
       <DangerModal
+        variant="destructive"
         isLoading={isPending}
         isOpen={isOpen}
         setOpen={setIsOpen}

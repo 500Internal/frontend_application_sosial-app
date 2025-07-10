@@ -22,8 +22,8 @@ export default function Navbar({ profile }: Props) {
       icon: <FaHome />,
     },
     {
-      name: "teman",
-      href: "/teman",
+      name: "mutual",
+      href: "/mutual",
       icon: <FaUserFriends />,
     },
     {

@@ -17,6 +17,7 @@ type AlerModalProps = {
   isLoading: boolean;
   title: string;
   description: string;
+  variant: "destructive" | "default" | "outline" | "secondary" | "ghost";
 };
 
 export default function DangerModal({
@@ -26,6 +27,8 @@ export default function DangerModal({
   title,
   description,
   isLoading,
+  variant
+
 }: AlerModalProps) {
   return (
     <AlertDialog open={isOpen}>
@@ -38,7 +41,7 @@ export default function DangerModal({
           <Button variant={"ghost"} onClick={() => setOpen(false)}>
             Cancel
           </Button>
-          <Button onClick={onConfirm} variant={"destructive"}>
+          <Button onClick={onConfirm} variant={variant}>
             {isLoading ? <Loader className="animate-spin" /> : "Confirm"}
           </Button>
         </AlertDialogFooter>
