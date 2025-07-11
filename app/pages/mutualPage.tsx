@@ -2,11 +2,12 @@ import React from "react";
 import { Button } from "shared/shadcn/button";
 import { Card, CardContent } from "shared/shadcn/card";
 import DangerModal from "shared/ui/modals/dangerModal";
+import { useCreateFollowRequest } from "~/features/followRequest/hooks/useCreateFollowRequest";
 import { useGetUserNotFollower } from "~/features/user/hooks/useGetUserNotFollower";
 
 export default function MutualPage() {
   const { data: user } = useGetUserNotFollower();
-
+  const {addFollowRequest} = useCreateFollowRequest();
   return (
     <>
     <DangerModal
@@ -34,7 +35,7 @@ export default function MutualPage() {
                 <h2 className="text-sm font-medium text-white text-center mt-3 line-clamp-1">
                   {user.profile.name}
                 </h2>
-                <Button className="w-full text-white bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 mt-3 hover:opacity-90 text-sm py-1.5 rounded-md">
+                <Button onClick={() => addFollowRequest({receiverId:user.id})} className="w-full text-white bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 mt-3 hover:opacity-90 text-sm py-1.5 rounded-md">
                   Follow
                 </Button>
               </CardContent>
