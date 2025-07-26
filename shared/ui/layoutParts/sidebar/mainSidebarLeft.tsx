@@ -7,7 +7,6 @@ import ProfileButton from "~/features/profile/components/profileButton";
 
 const navItems = [
   { name: "Add Mutual", href: "/mutual", icon: <FaUserFriends /> },
-  { name: "Group", href: "/group", icon: <FaUsers /> },
   { name: "Tersimpan", href: "/bookmark", icon: <FaBookmark /> },
 ];
 

@@ -26,11 +26,7 @@ export default function Navbar({ profile }: Props) {
       href: "/mutual",
       icon: <FaUserFriends />,
     },
-    {
-      name: "group",
-      href: "/group",
-      icon: <FaUsers />,
-    },
+
   ];
 
   const nav = useNavigate();
